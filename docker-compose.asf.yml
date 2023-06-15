@@ -1,0 +1,36 @@
+version: '3.4'
+
+services:
+  customers:
+    image: adityakumar666/ecommerceapicustomers:latest
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80/http"
+
+  orders:
+    image: adityakumar666/ecommerceapiorders:latest
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80/http"
+
+
+  products:
+    image: adityakumar666/ecommerceapiproducts:latest
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80/http"
+
+
+  search:
+    image: adityakumar666/ecommerceapisearch:latest
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - Services__Products=https://10.0.0.4:19081/adikum666/products/
+      - Services__Customers=https://10.0.0.4:19081/adikum666/customers/
+      - Services__Orders=https://10.0.0.4:19081/adikum666/orders/
+    ports:
+      - "6004:80"
+
